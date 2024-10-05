@@ -1,7 +1,11 @@
 import { messages } from "./messages.js";
 
 export const cmdParser = (cmd) => {
-  let cmdStart = cmd.split(" ")[0];
+  const cmdArgs = cmd
+    .split(" ")
+    .map((x) => x.trim())
+    .filter((x) => x !== "");
+  let cmdStart = cmdArgs[0];
 
   switch (cmdStart) {
     case "up":
@@ -9,7 +13,11 @@ export const cmdParser = (cmd) => {
       break;
 
     case "cd":
-      console.log("cd");
+      if (cmdArgs.length !== 2) {
+        console.log(messages.invalidInput);
+      } else {
+        console.log("cd");
+      }
       break;
 
     case "ls":
@@ -17,43 +25,83 @@ export const cmdParser = (cmd) => {
       break;
 
     case "cat":
-      console.log("cat");
+      if (cmdArgs.length !== 2) {
+        console.log(messages.invalidInput);
+      } else {
+        console.log("cat");
+      }
       break;
 
     case "add":
-      console.log("add");
+      if (cmdArgs.length !== 2) {
+        console.log(messages.invalidInput);
+      } else {
+        console.log("add");
+      }
       break;
 
     case "rn":
-      console.log("rn");
+      if (cmdArgs.length !== 3) {
+        console.log(messages.invalidInput);
+      } else {
+        console.log("rn");
+      }
       break;
 
     case "cp":
-      console.log("cp");
+      if (cmdArgs.length !== 3) {
+        console.log(messages.invalidInput);
+      } else {
+        console.log("cp");
+      }
       break;
 
     case "mv":
-      console.log("mv");
+      if (cmdArgs.length !== 3) {
+        console.log(messages.invalidInput);
+      } else {
+        console.log("mv");
+      }
       break;
 
     case "rm":
-      console.log("rm");
+      if (cmdArgs.length !== 2) {
+        console.log(messages.invalidInput);
+      } else {
+        console.log("rm");
+      }
       break;
 
     case "os":
-      console.log("os");
+      if (cmdArgs.length !== 2) {
+        console.log(messages.invalidInput);
+      } else {
+        console.log("os");
+      }
       break;
 
     case "hash":
-      console.log("hash");
+      if (cmdArgs.length !== 2) {
+        console.log(messages.invalidInput);
+      } else {
+        console.log("hash");
+      }
       break;
 
     case "compress":
-      console.log("compress");
+      if (cmdArgs.length !== 3) {
+        console.log(messages.invalidInput);
+      } else {
+        console.log("compress");
+      }
       break;
 
     case "decompress":
-      console.log("up");
+      if (cmdArgs.length !== 3) {
+        console.log(messages.invalidInput);
+      } else {
+        console.log("decompress");
+      }
       break;
 
     default:

@@ -3,7 +3,7 @@ import { messages } from "../messages.js";
 
 export const systemUtilities = (param) => {
   switch (param) {
-    case "eol": {
+    case "--EOL": {
       try {
         console.log(os.EOL);
       } catch (e) {
@@ -12,7 +12,7 @@ export const systemUtilities = (param) => {
       break;
     }
 
-    case "arch": {
+    case "--architecture": {
       try {
         console.log(os.arch());
       } catch (e) {
@@ -21,7 +21,7 @@ export const systemUtilities = (param) => {
       break;
     }
 
-    case "cpus": {
+    case "--cpus": {
       try {
         const cpus = os.cpus();
         console.log("Overall amount of CPUS " + cpus.length);
@@ -32,7 +32,7 @@ export const systemUtilities = (param) => {
       break;
     }
 
-    case "homedir": {
+    case "--homedir": {
       try {
         console.log(os.homedir());
       } catch (e) {
@@ -41,7 +41,7 @@ export const systemUtilities = (param) => {
       break;
     }
 
-    case "username": {
+    case "--username": {
       try {
         const info = os.userInfo();
         console.log(info.username);
