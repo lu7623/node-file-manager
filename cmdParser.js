@@ -1,6 +1,6 @@
 import { messages } from "./messages.js";
 
-export const cmdParser = (cmd) => {
+export const cmdParser = (cmd, fileManager) => {
   const cmdArgs = cmd
     .split(" ")
     .map((x) => x.trim())
@@ -9,26 +9,26 @@ export const cmdParser = (cmd) => {
 
   switch (cmdStart) {
     case "up":
-      console.log("up");
+      fileManager.goUp();
       break;
 
     case "cd":
       if (cmdArgs.length !== 2) {
         console.log(messages.invalidInput);
       } else {
-        console.log("cd");
+        fileManager.chDir(cmdArgs[1]);
       }
       break;
 
     case "ls":
-      console.log("ls");
+      fileManager.ls();
       break;
 
     case "cat":
       if (cmdArgs.length !== 2) {
         console.log(messages.invalidInput);
       } else {
-        console.log("cat");
+        fileManager.cat(cmdArgs[1]);
       }
       break;
 
@@ -36,7 +36,7 @@ export const cmdParser = (cmd) => {
       if (cmdArgs.length !== 2) {
         console.log(messages.invalidInput);
       } else {
-        console.log("add");
+        fileManager.add(cmdArgs[1]);
       }
       break;
 
@@ -44,7 +44,7 @@ export const cmdParser = (cmd) => {
       if (cmdArgs.length !== 3) {
         console.log(messages.invalidInput);
       } else {
-        console.log("rn");
+        fileManager.rn(cmdArgs[1], cmdArgs[2]);
       }
       break;
 
@@ -52,7 +52,7 @@ export const cmdParser = (cmd) => {
       if (cmdArgs.length !== 3) {
         console.log(messages.invalidInput);
       } else {
-        console.log("cp");
+        fileManager.cp(cmdArgs[1], cmdArgs[2]);
       }
       break;
 
@@ -60,7 +60,7 @@ export const cmdParser = (cmd) => {
       if (cmdArgs.length !== 3) {
         console.log(messages.invalidInput);
       } else {
-        console.log("mv");
+        fileManager.mv(cmdArgs[1], cmdArgs[2]);
       }
       break;
 
@@ -68,7 +68,7 @@ export const cmdParser = (cmd) => {
       if (cmdArgs.length !== 2) {
         console.log(messages.invalidInput);
       } else {
-        console.log("rm");
+        fileManager.rm(cmdArgs[1]);
       }
       break;
 
@@ -76,7 +76,7 @@ export const cmdParser = (cmd) => {
       if (cmdArgs.length !== 2) {
         console.log(messages.invalidInput);
       } else {
-        console.log("os");
+        fileManager.os(cmdArgs[1]);
       }
       break;
 
@@ -84,7 +84,7 @@ export const cmdParser = (cmd) => {
       if (cmdArgs.length !== 2) {
         console.log(messages.invalidInput);
       } else {
-        console.log("hash");
+        fileManager.hash(cmdArgs[1]);
       }
       break;
 
@@ -92,7 +92,7 @@ export const cmdParser = (cmd) => {
       if (cmdArgs.length !== 3) {
         console.log(messages.invalidInput);
       } else {
-        console.log("compress");
+        fileManager.compress(cmdArgs[1], cmdArgs[2]);
       }
       break;
 
@@ -100,7 +100,7 @@ export const cmdParser = (cmd) => {
       if (cmdArgs.length !== 3) {
         console.log(messages.invalidInput);
       } else {
-        console.log("decompress");
+        fileManager.decompress(cmdArgs[1], cmdArgs[2]);
       }
       break;
 
