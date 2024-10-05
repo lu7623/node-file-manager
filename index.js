@@ -8,17 +8,17 @@ const userName = userArg
   : "Anonymous user";
 
 const runFileManager = async () => {
-  const fm = new FileManager(userName, userDir);
+  const fileManager = new FileManager(userName, userDir);
 
-  stdout.write(fm.welcome());
-  stdout.write(fm.showDir());
+  stdout.write(fileManager.welcome());
+  stdout.write(fileManager.showDir());
   stdin.resume();
   process.on("SIGINT", () => {
-    stdout.write(fm.bye());
+    stdout.write(fileManager.goodbye());
     process.exit(0);
   });
 
-  stdin.on("data", async (data) => cmdParser(data, fm));
+  stdin.on("data", async (data) => cmdParser(data, fileManager));
 };
 
 runFileManager();
