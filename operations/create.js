@@ -4,15 +4,9 @@ import path from "node:path";
 
 export const create = async (newFileName, dir) => {
   const filePath = path.join(dir, newFileName);
-
-await fs.open(filePath, "wx", function (err, fd) {
-    if (err) {
-      console.log(messages.fail);
-    }
-    fs.close(fd, function (err) {
-      if (err) {
-        console.log(messages.fail);
-      }
-    });
-  });
+  try {
+    await fs.writeFile(filePath, '', { flag: "wx" });
+  } catch (err) {
+    console.log(messages.fail);
+  }
 };

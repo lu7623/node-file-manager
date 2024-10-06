@@ -1,24 +1,24 @@
 import { cmdParser } from "./cmdParser.js";
 import { FileManager } from "./fileManager.js";
 import { homedir } from "os";
+
 const userDir = homedir();
-const userArg = argv.slice(2).find((arg) => arg.startsWith("--username="));
-const userName = userArg
-  ? userArg.replace("--username=", "")
-  : "Anonymous user";
+console.log(userDir)
+const args = process.argv.slice(2);
+const userName = args.find((arg) => arg.startsWith("--username=")).split('=')[1] || "Anonymous user";
 
 const runFileManager = async () => {
   const fileManager = new FileManager(userName, userDir);
 
-  stdout.write(fileManager.welcome());
-  stdout.write(fileManager.showDir());
-  stdin.resume();
+  fileManager.welcome();
+  fileManager.showDir();
+
   process.on("SIGINT", () => {
-    stdout.write(fileManager.goodbye());
+  fileManager.goodbye();
     process.exit(0);
   });
 
-  stdin.on("data", async (data) => cmdParser(data, fileManager));
+  process.stdin.on("data", async (data) => cmdParser(data, fileManager));
 };
 
 runFileManager();

@@ -5,6 +5,7 @@ export const cd = (dirName) => {
     try {
         chdir(dirName);
       } catch (err) {
+        console.log(err)
         console.log(messages.fail)
       }
 }

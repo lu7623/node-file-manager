@@ -16,6 +16,7 @@ export class FileManager {
   constructor(userName, dir) {
     this.user = userName;
     this.currDir = dir;
+    cd(this.currDir);
   }
 
   welcome() {
@@ -32,49 +33,61 @@ export class FileManager {
 
   goUp() {
     up();
+    this.showDir();
   }
 
-  chDir(dir) {
-    cd(dir);
+   chDir(dir) {
+     cd(dir);
+    this.showDir();
   }
 
-  ls() {
-    list();
+ async ls() {
+    await  list(this.currDir);
+    this.showDir();
   }
 
-  cat(path) {
+ async cat(path) {
     read(path);
+    this.showDir();
   }
 
-  add(fileName) {
-    create(fileName);
+ async add(fileName) {
+   await create(fileName, this.currDir);
+    this.showDir();
   }
 
-  cp(src, dest) {
-    copy(src, dest);
+ async cp(src, dest) {
+  await  copy(src, dest);
+    this.showDir();
   }
 
   mv(src, dest) {
     move(src, dest);
+    this.showDir();
   }
 
-  rm(path) {
-    remove(path);
+ async rm(path) {
+   await remove(path);
+    this.showDir();
   }
 
   os(param) {
     systemUtilities(param);
+    this.showDir();
   }
 
-  hash(path) {
-    calculateHash(path);
+ async hash(path) {
+   await calculateHash(path);
+    this.showDir();
   }
 
-  compress(src, dest) {
-    compress(src, dest);
+async  compress(src, dest) {
+   await compress(src, dest);
+    this.showDir();
   }
 
-  decompress(src, dest) {
-    decompress(src, dest);
+ async decompress(src, dest) {
+  await  decompress(src, dest);
+    this.showDir();
   }
 }

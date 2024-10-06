@@ -1,7 +1,7 @@
 import { messages } from "./messages.js";
 
 export const cmdParser = async (cmd, fileManager) => {
-  const cmdArgs = cmd
+  const cmdArgs = cmd.toString()
     .split(" ")
     .map((x) => x.trim())
     .filter((x) => x !== "");
@@ -21,14 +21,14 @@ export const cmdParser = async (cmd, fileManager) => {
       break;
 
     case "ls":
-      fileManager.ls();
+      await fileManager.ls();
       break;
 
     case "cat":
       if (cmdArgs.length !== 2) {
         console.log(messages.invalidInput);
       } else {
-        await fileManager.cat(cmdArgs[1]);
+         fileManager.cat(cmdArgs[1]);
       }
       break;
 
@@ -60,7 +60,7 @@ export const cmdParser = async (cmd, fileManager) => {
       if (cmdArgs.length !== 3) {
         console.log(messages.invalidInput);
       } else {
-        await fileManager.mv(cmdArgs[1], cmdArgs[2]);
+         fileManager.mv(cmdArgs[1], cmdArgs[2]);
       }
       break;
 
