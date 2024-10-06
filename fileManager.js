@@ -36,38 +36,38 @@ export class FileManager {
     this.showDir();
   }
 
-   chDir(dir) {
-     cd(dir);
+  chDir(dir) {
+    cd(dir);
     this.showDir();
   }
 
- async ls() {
-    await  list(this.currDir);
+  async ls() {
+    await list(this.currDir);
     this.showDir();
   }
 
- async cat(path) {
-    read(path);
+  async cat(path) {
+    await read(path);
     this.showDir();
   }
 
- async add(fileName) {
-   await create(fileName, this.currDir);
+  async add(fileName) {
+    await create(fileName, this.currDir);
     this.showDir();
   }
 
- async cp(src, dest) {
-  await  copy(src, dest);
+  async cp(src, dest) {
+    await copy(src, dest);
     this.showDir();
   }
 
-  mv(src, dest) {
-    move(src, dest);
+  async mv(src, dest) {
+    await move(src, dest);
     this.showDir();
   }
 
- async rm(path) {
-   await remove(path);
+  async rm(path) {
+    await remove(path);
     this.showDir();
   }
 
@@ -76,18 +76,18 @@ export class FileManager {
     this.showDir();
   }
 
- async hash(path) {
-   await calculateHash(path);
+  async hash(path) {
+    await calculateHash(path);
     this.showDir();
   }
 
-async  compress(src, dest) {
-   await compress(src, dest);
+  async compress(src, dest) {
+    await compress(src, dest);
     this.showDir();
   }
 
- async decompress(src, dest) {
-  await  decompress(src, dest);
+  async decompress(src, dest) {
+    await decompress(src, dest);
     this.showDir();
   }
 }

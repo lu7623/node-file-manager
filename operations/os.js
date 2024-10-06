@@ -5,7 +5,7 @@ export const systemUtilities = (param) => {
   switch (param) {
     case "--EOL": {
       try {
-        console.log(os.EOL);
+        console.log(JSON.stringify(os.EOL));
       } catch (e) {
         console.log(messages.fail);
       }
