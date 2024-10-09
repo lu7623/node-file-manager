@@ -1,5 +1,9 @@
 import { messages } from "./messages.js";
 
+const isValidArgs = (cmdArgs, length) => {
+  return cmdArgs.length === length
+};
+
 export const cmdParser = async (cmd, fileManager) => {
   const cmdArgs = cmd
     .toString()
@@ -14,9 +18,10 @@ export const cmdParser = async (cmd, fileManager) => {
       break;
 
     case "cd":
-      if (cmdArgs.length !== 2) {
+      if (!isValidArgs(cmdArgs, 2)) {
         console.log(messages.invalidInput);
       } else {
+        console.log(cmdArgs[1])
         fileManager.chDir(cmdArgs[1]);
       }
       break;
@@ -26,7 +31,7 @@ export const cmdParser = async (cmd, fileManager) => {
       break;
 
     case "cat":
-      if (cmdArgs.length !== 2) {
+      if (!isValidArgs(cmdArgs, 2)) {
         console.log(messages.invalidInput);
       } else {
         await fileManager.cat(cmdArgs[1]);
@@ -34,7 +39,7 @@ export const cmdParser = async (cmd, fileManager) => {
       break;
 
     case "add":
-      if (cmdArgs.length !== 2) {
+      if (!isValidArgs(cmdArgs, 2)) {
         console.log(messages.invalidInput);
       } else {
         await fileManager.add(cmdArgs[1]);
@@ -42,7 +47,7 @@ export const cmdParser = async (cmd, fileManager) => {
       break;
 
     case "rn":
-      if (cmdArgs.length !== 3) {
+      if (!isValidArgs(cmdArgs, 3)) {
         console.log(messages.invalidInput);
       } else {
         await fileManager.rn(cmdArgs[1], cmdArgs[2]);
@@ -50,7 +55,7 @@ export const cmdParser = async (cmd, fileManager) => {
       break;
 
     case "cp":
-      if (cmdArgs.length !== 3) {
+      if (!isValidArgs(cmdArgs, 3)) {
         console.log(messages.invalidInput);
       } else {
         await fileManager.cp(cmdArgs[1], cmdArgs[2]);
@@ -58,7 +63,7 @@ export const cmdParser = async (cmd, fileManager) => {
       break;
 
     case "mv":
-      if (cmdArgs.length !== 3) {
+      if (!isValidArgs(cmdArgs, 3)) {
         console.log(messages.invalidInput);
       } else {
         await fileManager.mv(cmdArgs[1], cmdArgs[2]);
@@ -66,7 +71,7 @@ export const cmdParser = async (cmd, fileManager) => {
       break;
 
     case "rm":
-      if (cmdArgs.length !== 2) {
+      if (!isValidArgs(cmdArgs, 2)) {
         console.log(messages.invalidInput);
       } else {
         await fileManager.rm(cmdArgs[1]);
@@ -74,7 +79,7 @@ export const cmdParser = async (cmd, fileManager) => {
       break;
 
     case "os":
-      if (cmdArgs.length !== 2) {
+      if (!isValidArgs(cmdArgs, 2)) {
         console.log(messages.invalidInput);
       } else {
         fileManager.os(cmdArgs[1]);
@@ -82,7 +87,7 @@ export const cmdParser = async (cmd, fileManager) => {
       break;
 
     case "hash":
-      if (cmdArgs.length !== 2) {
+      if (!isValidArgs(cmdArgs, 2)) {
         console.log(messages.invalidInput);
       } else {
         await fileManager.hash(cmdArgs[1]);
@@ -90,7 +95,7 @@ export const cmdParser = async (cmd, fileManager) => {
       break;
 
     case "compress":
-      if (cmdArgs.length !== 3) {
+      if (!isValidArgs(cmdArgs, 3)) {
         console.log(messages.invalidInput);
       } else {
         await fileManager.compress(cmdArgs[1], cmdArgs[2]);
@@ -98,7 +103,7 @@ export const cmdParser = async (cmd, fileManager) => {
       break;
 
     case "decompress":
-      if (cmdArgs.length !== 3) {
+      if (!isValidArgs(cmdArgs, 3)) {
         console.log(messages.invalidInput);
       } else {
         await fileManager.decompress(cmdArgs[1], cmdArgs[2]);

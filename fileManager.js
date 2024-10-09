@@ -10,6 +10,7 @@ import { list } from "./operations/list.js";
 import { move } from "./operations/move.js";
 import { systemUtilities } from "./operations/os.js";
 import { read } from "./operations/read.js";
+import { rename } from "./operations/rename.js";
 import { up } from "./operations/up.js";
 
 export class FileManager {
@@ -37,7 +38,8 @@ export class FileManager {
   }
 
   chDir(dir) {
-    cd(dir);
+    const directory = cd(dir);
+    if (directory) this.currDir = dir;
     this.showDir();
   }
 
@@ -53,6 +55,11 @@ export class FileManager {
 
   async add(fileName) {
     await create(fileName, this.currDir);
+    this.showDir();
+  }
+
+  async rn(path, newFileName) {
+    await rename(path, newFileName);
     this.showDir();
   }
 

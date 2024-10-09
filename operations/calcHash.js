@@ -1,10 +1,11 @@
-import { createReadStream } from "node:fs";
+import { open } from 'node:fs/promises';
 import { createHash } from "node:crypto";
 import { messages } from "../messages.js";
 
 export const calculateHash = async (pathToFile) => {
   const hash = createHash("sha256");
-  const readStream = createReadStream(pathToFile);
+  const fd = await open(pathToFile);
+  const readStream =  fd.createReadStream(pathToFile);
 
   readStream.on("data", (data) => {
     hash.update(data);
