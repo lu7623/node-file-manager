@@ -1,7 +1,7 @@
 import { messages } from "./messages.js";
 
 const isValidArgs = (cmdArgs, length) => {
-  return cmdArgs.length === length
+  return cmdArgs.length === length;
 };
 
 export const cmdParser = async (cmd, fileManager) => {
@@ -21,7 +21,7 @@ export const cmdParser = async (cmd, fileManager) => {
       if (!isValidArgs(cmdArgs, 2)) {
         console.log(messages.invalidInput);
       } else {
-        console.log(cmdArgs[1])
+        console.log(cmdArgs[1]);
         fileManager.chDir(cmdArgs[1]);
       }
       break;
@@ -108,6 +108,11 @@ export const cmdParser = async (cmd, fileManager) => {
       } else {
         await fileManager.decompress(cmdArgs[1], cmdArgs[2]);
       }
+      break;
+
+    case ".exit":
+      fileManager.goodbye();
+      process.exit(0);
       break;
 
     default:
