@@ -33,13 +33,14 @@ export class FileManager {
   }
 
   goUp() {
-    up();
+    const upDir = up();
+    if (upDir) this.currDir = upDir;
     this.showDir();
   }
 
   chDir(dir) {
-    const directory = cd(dir);
-    if (directory) this.currDir = dir;
+    const newDir = cd(dir);
+    if (newDir) this.currDir = newDir;
     this.showDir();
   }
 

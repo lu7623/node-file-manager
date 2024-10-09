@@ -1,12 +1,12 @@
-import { chdir } from 'node:process';
+import { chdir, cwd } from 'node:process';
 import { messages } from '../messages.js';
 
 export const cd = (dirName) => {
     try {
         chdir(dirName);
-        return dirName;
+        return cwd();
       } catch (err) {
-        console.log(err)
-        console.log(messages.fail)
+        console.log(messages.fail);
+        return null;
       }
 }
