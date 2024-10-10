@@ -9,7 +9,6 @@ export const rename = async (pathToFile, newName) => {
   try {
     await fs.rename(pathToFile, newPath);
   } catch (err) {
-    console.log(err)
     console.log(messages.fail)
   }
 };

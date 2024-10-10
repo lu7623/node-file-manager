@@ -1,7 +1,7 @@
 import { open } from 'node:fs/promises';
 import { messages } from "../messages.js";
 
-export const read = async (pathToFile) => {
+export const read = async (pathToFile, callback) => {
 try {
   const fd = await open(pathToFile);
   const readStream =  fd.createReadStream();
@@ -12,6 +12,10 @@ try {
 
   readStream.on("error", (err) => {
     console.log(messages.fail);
+  });
+
+  readStream.on("end", (err) => {
+   callback()
   });
 
 } catch (err) {

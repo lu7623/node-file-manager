@@ -23,7 +23,6 @@ export const list = async (path) => {
       .sort(compareFn);
     console.table(data);
   } catch (err) {
-    console.log(err);
     console.log(messages.fail);
   }
 };

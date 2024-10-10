@@ -50,8 +50,7 @@ export class FileManager {
   }
 
   async cat(path) {
-    await read(path);
-    this.showDir();
+    await read(path, this.showDir.bind(this));
   }
 
   async add(fileName) {

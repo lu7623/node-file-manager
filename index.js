@@ -3,10 +3,8 @@ import { FileManager } from "./fileManager.js";
 import { homedir } from "os";
 
 const userDir = homedir();
-const args = process.argv.slice(2);
-const userName =
-  args.find((arg) => arg.startsWith("--username=")).split("=")[1] ||
-  "Anonymous user";
+
+const userName = process.env.npm_config_username || "Anonymous user";
 
 const startFileManager = async () => {
   const fileManager = new FileManager(userName, userDir);
